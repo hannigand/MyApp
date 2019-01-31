@@ -22,18 +22,22 @@ export default class App extends Component<Props> {
   state = {
     value: ""
   };
+
   isPalindrome = str =>
     str
       .toLowerCase()
       .split("")
       .reverse()
       .join("") === str.toLowerCase();
+
   onChangeText = value => {
     this.setState({ value });
   };
+
   onPress = () => {
     alert(this.isPalindrome(this.state.value));
   };
+
   render() {
     return (
       <View style={styles.container}>
