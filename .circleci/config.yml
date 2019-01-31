@@ -24,16 +24,6 @@ jobs:
           paths:
             - node_modules
 
-      - run:
-          name: build detox
-          command: |
-            yarn run detox:build
-
-      - run:
-          name: test with detox
-          command: |
-            yarn run detox:test
-
   ios:
     macos:
       xcode: "10.0"
@@ -67,37 +57,15 @@ jobs:
           key: node-v1-{{ checksum "package.json" }}-{{ arch }}
           paths:
             - node_modules
-
-      - restore_cache:
-          key: bundle-v1-{{ checksum "ios/Gemfile.lock" }}-{{ arch }}
-
       - run:
-          command: bundle install
-          working_directory: ios
-
-      - save_cache:
-          key: bundle-v1-{{ checksum "ios/Gemfile.lock" }}-{{ arch }}
-          paths:
-            - vendor/bundle
-
-      - run:
-          command: bundle exec fastlane test
-          working_directory: ios
-
-      - run:
-          name: set up test results
-          working_directory: ios
-          when: always
+          name: build detox
           command: |
-            mkdir -p test-results/fastlane test-results/xcode
-            mv fastlane/report.xml test-results/fastlane
-            mv fastlane/test_output/report.junit test-results/xcode/junit.xml
+            yarn run detox:build
 
-      - store_test_results:
-          path: ios/test-results
-
-      - store_artifacts:
-          path: ios/test-results
+      - run:
+          name: test with detox
+          command: |
+            yarn run detox:test
 
 workflows:
   version: 2
