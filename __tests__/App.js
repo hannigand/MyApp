@@ -1,15 +1,22 @@
-/**
- * @format
- * @lint-ignore-every XPLATJSCOPYRIGHT1
- */
+import "react-native";
+import React from "react";
+import { Text } from "react-native";
+import Enzyme, { shallow } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
 
-import 'react-native';
-import React from 'react';
-import App from '../App';
+Enzyme.configure({ adapter: new Adapter() });
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
+import App from "../App";
 
-it('renders correctly', () => {
-  renderer.create(<App />);
+describe("Test isPalindrome", () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<App />);
+  });
+  it("should return false", () => {
+    expect(wrapper.instance().isPalindrome("Hello")).toBeFalsy();
+  });
+  it("should return true", () => {
+    expect(wrapper.instance().isPalindrome("Racecar")).toBeTruthy();
+  });
 });
