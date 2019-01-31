@@ -1,6 +1,8 @@
 version: 2
 jobs:
-  node:
+  test:
+    docker:
+      - image: circleci/node:latest-browsers-legacy
     steps:
       - checkout
       - run: yarn install
