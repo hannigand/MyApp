@@ -26,7 +26,7 @@ jobs:
 
   ios:
     macos:
-      xcode: "10.0"
+      xcode: "9.0"
 
     # use a --login shell so our "set Ruby version" command gets picked up for later steps
     shell: /bin/bash --login -o pipefail
