@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest",
     "detox:build": "detox build",
     "detox:test": "detox test -p ios --configuration ios.sim.debug",
     "detox:test:android:debug": "detox test -p android --configuration android.emu.debug",
@@ -25,9 +24,6 @@
     "jest": "24.0.0",
     "metro-react-native-babel-preset": "0.51.1",
     "react-test-renderer": "16.6.3"
-  },
-  "jest": {
-    "preset": "react-native"
   },
   "detox": {
     "configurations": {
@@ -51,5 +47,8 @@
       }
     },
     "test-runner": "jest"
+  },
+  "jest": {
+    "preset": "react-native"
   }
 }

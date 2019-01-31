@@ -1,0 +1,7 @@
+version: 2
+jobs:
+  node:
+    steps:
+      - checkout
+      - run: yarn install
+      - run: ./node_modules/.bin/jest __tests__/**/*.js
