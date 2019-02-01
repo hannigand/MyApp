@@ -6,13 +6,6 @@ jobs:
     steps:
       - checkout
       - run: yarn
-android:
-  docker:
-    - image: circleci/android:api-28-node8-alpha
-  steps:
-    - checkout
-    - run: yarn
-    - run: cd android && ./gradlew assembleRelease
 ios:
   macos:
     xcode: "9.4.1"
@@ -27,9 +20,6 @@ workflows:
   node-android-ios:
     jobs:
       - node
-      - android:
-          requires:
-            - node
       - ios:
           requires:
             - node
