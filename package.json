@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
     "detox:build": "detox build --configuration ios.sim.debug",
     "detox:test": "detox test -p ios --configuration ios.sim.debug",
     "detox:test:android:debug": "detox test -p android --configuration android.emu.debug",

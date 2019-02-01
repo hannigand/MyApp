@@ -1,25 +1,9 @@
 version: 2
-jobs:
-  node:
-    docker:
-      - image: circleci/node:8
-    steps:
-      - checkout
-      - run: yarn
-ios:
-  macos:
-    xcode: "9.4.1"
-  # use a --login shell so our "set Ruby version" command gets picked up for later steps
-  shell: /bin/bash --login -o pipefail
-steps:
-  - checkout
-  - run: yarn
-  - run: xcodebuild -project ios/MyApp.xcodeproj -scheme "MyApp" -sdk iphonesimulator -destination 'platform=iOS Simulator,OS=11.4,name=iPhone X'
-workflows:
-  version: 2
-  node-android-ios:
     jobs:
-      - node
-      - ios:
-          requires:
-            - node
+        node:
+            docker:
+                - image: circleci/node:8
+            steps:
+                - checkout
+                - run: yarn
+                - run: yarn test
