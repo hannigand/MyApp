@@ -1,9 +1,14 @@
 version: 2
 jobs:
-  node:
+  test:
     docker:
       - image: circleci/node:8
     steps:
       - checkout
       - run: yarn
       - run: yarn test
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
